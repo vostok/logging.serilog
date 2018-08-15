@@ -11,9 +11,20 @@ using SerilogLevel = Serilog.Events.LogEventLevel;
 
 namespace Vostok.Logging.Serilog
 {
-    // TODO(iloktionov): xml-docs
     // TODO(iloktionov): unit tests
 
+    /// <summary>
+    /// <para>Represents an adapter between Vostok logging interfaces and Serilog.</para>
+    /// <para>It implements Vostok <see cref="ILog"/> interface using an externally provided instance of Serilog <see cref="ILogger"/>.</para>
+    /// <para>It does this by following these rules:</para>
+    /// <list type="number">
+    ///     <item><description>Vostok <see cref="LogLevel"/>s are directly translated to Serilog <see cref="SerilogLevel"/>s.<para/></description></item>
+    ///     <item><description>Messages are not prerendered into text as Vostok <see cref="ILog"/>'s formatting syntax capabilities are a subset of those supported by Serilog.<para/></description></item>
+    ///     <item><description>Message templates are parsed using <see cref="ILogger.BindMessageTemplate"/>.<para/></description></item>
+    ///     <item><description>Event properties are converted using <see cref="ILogger.BindProperty"/>.<para/></description></item>
+    ///     <item><description><see cref="ForContext"/> invokes inner <see cref="ILogger"/>'s <see cref="ILogger.ForContext(string,object,bool)"/> with name set to <see cref="Constants.SourceContextPropertyName"/> and wraps resulting <see cref="ILogger"/> into another <see cref="SerilogLog"/>.<para/></description></item>
+    /// </list>
+    /// </summary>
     public class SerilogLog : ILog
     {
         private readonly ILogger logger;
