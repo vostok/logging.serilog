@@ -11,8 +11,6 @@ using SerilogLevel = Serilog.Events.LogEventLevel;
 
 namespace Vostok.Logging.Serilog
 {
-    // TODO(iloktionov): unit tests
-
     /// <summary>
     /// <para>Represents an adapter between Vostok logging interfaces and Serilog.</para>
     /// <para>It implements Vostok <see cref="ILog"/> interface using an externally provided instance of Serilog <see cref="ILogger"/>.</para>
