@@ -7,9 +7,12 @@ notests *default:
 
   install:
     - Vostok.Logging.Serilog/bin/Release/netstandard2.0/Vostok.Logging.Serilog.dll
+    - module vostok.logging.abstractions
+    - nuget Serilog/2.7.1
 
   deps:
     - vostok.devtools
+    - vostok.logging.abstractions
 
 full-build > notests:
   build:

@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  
   <Import Project="..\..\vostok.devtools\library-common-props\Main-Project.props" />
   <Import Project="..\..\vostok.devtools\git-commit-to-assembly-title\Vostok.Tools.GitCommit2AssemblyTitle.props" />
 
@@ -27,8 +26,18 @@
   <PropertyGroup>
     <PackageProjectUrl>https://github.com/vostok/logging.serilog</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/vostok/logging.serilog/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageTags>vostok</PackageTags>
+    <PackageTags>vostok vostok.logging</PackageTags>
     <RepositoryUrl>https://github.com/vostok/logging.serilog</RepositoryUrl>
   </PropertyGroup>
-  
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Vostok.Logging.Abstractions">
+      <HintPath>..\..\vostok.logging.abstractions\Vostok.Logging.Abstractions\bin\Release\netstandard2.0\Vostok.Logging.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

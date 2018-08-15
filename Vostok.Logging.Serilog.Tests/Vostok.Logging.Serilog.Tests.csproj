@@ -1,5 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <Import Project="..\..\vostok.devtools\library-common-props\Test-Project.props" />
   <Import Project="..\..\vostok.devtools\git-commit-to-assembly-title\Vostok.Tools.GitCommit2AssemblyTitle.props" />
 
@@ -15,10 +15,17 @@
     <PackageReference Include="NSubstitute" Version="3.1.0" />
     <PackageReference Include="NUnit" Version="3.10.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+    <PackageReference Include="Serilog" Version="2.7.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Vostok.Logging.Serilog\Vostok.Logging.Serilog.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Vostok.Logging.Abstractions">
+      <HintPath>..\..\vostok.logging.abstractions\Vostok.Logging.Abstractions\bin\Release\netstandard2.0\Vostok.Logging.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  
 </Project>
