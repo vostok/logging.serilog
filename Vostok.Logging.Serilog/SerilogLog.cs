@@ -80,12 +80,22 @@ namespace Vostok.Logging.Serilog
 
         private MessageTemplate CreateTemplate(LogEvent @event)
         {
-            throw new NotImplementedException();
+            if (logger.BindMessageTemplate(@event.MessageTemplate, Array.Empty<object>(), out var serilogTemplate, out _))
+                return serilogTemplate;
+
+            return MessageTemplate.Empty;
         }
 
         private IEnumerable<LogEventProperty> CreateProperties(LogEvent @event)
         {
-            throw new NotImplementedException();
+            if (@event.Properties == null)
+                yield break;
+
+            foreach (var pair in @event.Properties)
+            {
+                if (logger.BindProperty(pair.Key, pair.Value, false, out var serilogProperty))
+                    yield return serilogProperty;
+            }
         }
     }
 }
