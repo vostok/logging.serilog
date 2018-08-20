@@ -50,12 +50,7 @@ namespace Vostok.Logging.Serilog
 
         public ILog ForContext(string context)
         {
-            var loggerWithContext = logger.ForContext(Constants.SourceContextPropertyName, context);
-
-            if (ReferenceEquals(logger, loggerWithContext))
-                return this;
-
-            return new SerilogLog(loggerWithContext);
+            return new SerilogLog(logger.ForContext(Constants.SourceContextPropertyName, context));
         }
 
         private static SerilogLevel TranslateLevel(LogLevel level)
