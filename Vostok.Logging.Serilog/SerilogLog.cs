@@ -50,6 +50,9 @@ namespace Vostok.Logging.Serilog
 
         public ILog ForContext(string context)
         {
+            if (context == null)
+                throw new ArgumentNullException(nameof(context));
+
             return new SerilogLog(logger.ForContext(Constants.SourceContextPropertyName, context));
         }
 

@@ -112,21 +112,6 @@ namespace Vostok.Logging.Serilog
         }
 
         [Test]
-        public void ForContext_should_support_turning_source_context_to_null()
-        {
-            adapter = adapter
-                .ForContext("ctx1")
-                .ForContext("ctx2")
-                .ForContext(null);
-
-            adapter.Info("Hello!");
-
-            observedEvent.Properties[Constants.SourceContextPropertyName]
-                .Should().BeOfType<ScalarValue>().Which.Value
-                .Should().BeNull();
-        }
-
-        [Test]
         public void Log_method_should_support_null_events()
         {
             adapter.Log(null);
