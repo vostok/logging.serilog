@@ -15,7 +15,7 @@
 
   <PropertyGroup>
     <Title>Vostok.Logging.Serilog</Title>
-    <Description>Vostok.Logging.Serilog</Description>
+    <Description>A bridge from Vostok ILog interface to Serilog ILogger.</Description>
   </PropertyGroup>
 
   <PropertyGroup>
