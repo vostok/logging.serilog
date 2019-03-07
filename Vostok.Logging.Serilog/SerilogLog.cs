@@ -5,6 +5,7 @@ using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 using Vostok.Logging.Abstractions;
+using Vostok.Logging.Abstractions.Values;
 using LogEvent = Vostok.Logging.Abstractions.LogEvent;
 using SerilogEvent = Serilog.Events.LogEvent;
 using SerilogLevel = Serilog.Events.LogEventLevel;
@@ -26,12 +27,20 @@ namespace Vostok.Logging.Serilog
     public class SerilogLog : ILog
     {
         private readonly ILogger logger;
+        private readonly SourceContextValue sourceContext;
+
+        private SerilogLog([NotNull] ILogger logger, SourceContextValue sourceContext)
+        {
+            this.logger = logger;
+            this.sourceContext = sourceContext;
+        }
 
         public SerilogLog([NotNull] ILogger logger)
         {
             this.logger = logger;
         }
 
+        /// <inheritdoc />
         public void Log(LogEvent @event)
         {
             if (@event == null)
@@ -43,17 +52,24 @@ namespace Vostok.Logging.Serilog
             }
         }
 
+        /// <inheritdoc />
         public bool IsEnabledFor(LogLevel level)
         {
             return logger.IsEnabled(TranslateLevel(level));
         }
 
+        /// <inheritdoc />
         public ILog ForContext(string context)
         {
             if (context == null)
                 throw new ArgumentNullException(nameof(context));
 
-            return new SerilogLog(logger.ForContext(Constants.SourceContextPropertyName, context));
+            var newSourceContext = sourceContext + context;
+
+            if (ReferenceEquals(sourceContext, newSourceContext))
+                return this;
+
+            return new SerilogLog(logger.ForContext(Constants.SourceContextPropertyName, newSourceContext), newSourceContext);
         }
 
         private static SerilogLevel TranslateLevel(LogLevel level)

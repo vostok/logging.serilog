@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using FluentAssertions;
 using FluentAssertions.Extensions;
@@ -92,12 +93,12 @@ namespace Vostok.Logging.Serilog
             adapter.Info("Hello!");
 
             observedEvent.Properties[Constants.SourceContextPropertyName]
-                .Should().BeOfType<ScalarValue>().Which.Value
-                .Should().Be("ctx");
+                .Should().BeOfType<SequenceValue>().Which.Elements.Cast<ScalarValue>().Select(element => element.Value)
+                .Should().Equal("ctx");
         }
 
         [Test]
-        public void ForContext_should_support_overriding_source_context_with_multiple_calls()
+        public void ForContext_should_support_accumulating_source_context_with_multiple_calls()
         {
             adapter = adapter
                 .ForContext("ctx1")
@@ -107,8 +108,8 @@ namespace Vostok.Logging.Serilog
             adapter.Info("Hello!");
 
             observedEvent.Properties[Constants.SourceContextPropertyName]
-                .Should().BeOfType<ScalarValue>().Which.Value
-                .Should().Be("ctx3");
+                .Should().BeOfType<SequenceValue>().Which.Elements.Cast<ScalarValue>().Select(element => element.Value)
+                .Should().Equal("ctx1", "ctx2", "ctx3");
         }
 
         [Test]
