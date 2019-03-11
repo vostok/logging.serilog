@@ -22,6 +22,7 @@
     <PackageProjectUrl>https://github.com/vostok/logging.serilog</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/vostok/logging.serilog/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>vostok vostok.logging</PackageTags>
+    <PackageReleaseNotes>https://github.com/vostok/logging.serilog/blob/master/CHANGELOG.md</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/vostok/logging.serilog</RepositoryUrl>
   </PropertyGroup>
 
