@@ -134,6 +134,19 @@ namespace Vostok.Logging.Serilog
         }
 
         [Test]
+        public void Log_method_should_support_syntax_with_index_based_parameters_in_template_with_strings()
+        {
+            adapter.Info("P1 = {0}, P2 = {1}", "value1", "value2");
+
+            Output.Should().Be("P1 = \"value1\", P2 = \"value2\"");
+
+            observedEvent.Properties.Should().HaveCount(2);
+
+            observedEvent.Properties["0"].Should().BeOfType<ScalarValue>().Which.Value.Should().Be("value1");
+            observedEvent.Properties["1"].Should().BeOfType<ScalarValue>().Which.Value.Should().Be("value2");
+        }
+
+        [Test]
         public void Log_method_should_support_syntax_with_named_properties_in_anonymous_object()
         {
             adapter.Info("P1 = {Param1}, P2 = {Param2}", new { Param1 = 1, Param2 = 2 });
@@ -214,12 +227,6 @@ namespace Vostok.Logging.Serilog
             adapter.Log(@event);
 
             observedEvent.Level.Should().Be(serilogLevel);
-        }
-
-        [Test]
-        public void Source_context_property_names_should_match_in_vostok_and_serilog()
-        {
-            WellKnownProperties.SourceContext.Should().Be(Constants.SourceContextPropertyName);
         }
 
         private string Output => outputBuilder.ToString();
