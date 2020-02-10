@@ -42,8 +42,6 @@ namespace Vostok.Logging.Serilog
                 .CreateLogger();
         }
 
-        // TODO(iloktionov): source context
-
         [TestCase(SerilogLevel.Verbose, LogLevel.Debug)]
         [TestCase(SerilogLevel.Debug, LogLevel.Debug)]
         [TestCase(SerilogLevel.Information, LogLevel.Info)]
