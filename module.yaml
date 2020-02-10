@@ -15,6 +15,9 @@ notests *default:
     - vostok.logging.abstractions
 
 full-build > notests:
+  deps:
+    - vostok.logging.console
+
   build:
     target: Vostok.Logging.Serilog.sln
     configuration: Release

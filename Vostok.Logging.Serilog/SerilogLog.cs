@@ -24,6 +24,7 @@ namespace Vostok.Logging.Serilog
     ///     <item><description><see cref="ForContext"/> invokes inner <see cref="ILogger"/>'s <see cref="ILogger.ForContext(string,object,bool)"/> with name set to <see cref="Constants.SourceContextPropertyName"/> and wraps resulting <see cref="ILogger"/> into another <see cref="SerilogLog"/>.<para/></description></item>
     /// </list>
     /// </summary>
+    [PublicAPI]
     public class SerilogLog : ILog
     {
         private readonly ILogger logger;
