@@ -1,3 +1,7 @@
+## 1.0.2 (10.02.2020):
+
+Implemented VostokSink.
+
 ## 1.0.1 (15.03.2019)
 
 Publishing 1.0.1 as 1.0.0 was published earlier by accident and is now unlisted.
