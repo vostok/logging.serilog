@@ -1,3 +1,7 @@
+## 1.0.3 (06-12-2021):
+
+Added `net6.0` target.
+
 ## 1.0.2 (10.02.2020):
 
 Implemented VostokSink.
