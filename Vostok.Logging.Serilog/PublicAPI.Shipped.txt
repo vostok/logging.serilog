@@ -1,0 +1,8 @@
+Vostok.Logging.Serilog.SerilogLog
+Vostok.Logging.Serilog.SerilogLog.ForContext(string context) -> Vostok.Logging.Abstractions.ILog
+Vostok.Logging.Serilog.SerilogLog.IsEnabledFor(Vostok.Logging.Abstractions.LogLevel level) -> bool
+Vostok.Logging.Serilog.SerilogLog.Log(Vostok.Logging.Abstractions.LogEvent event) -> void
+Vostok.Logging.Serilog.SerilogLog.SerilogLog(Serilog.ILogger logger) -> void
+Vostok.Logging.Serilog.VostokSink
+Vostok.Logging.Serilog.VostokSink.Emit(Serilog.Events.LogEvent event) -> void
+Vostok.Logging.Serilog.VostokSink.VostokSink(Vostok.Logging.Abstractions.ILog log) -> void
