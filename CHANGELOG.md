@@ -1,3 +1,7 @@
+## 1.0.5 (16-12-2024): 
+
+Bump NuGet deps versions
+
 ## 1.0.4 (06-12-2021):
 
 Added `net6.0` target.
