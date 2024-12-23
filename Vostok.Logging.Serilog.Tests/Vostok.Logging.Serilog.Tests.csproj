@@ -14,12 +14,7 @@
     <ProjectReference Include="..\Vostok.Logging.Serilog\Vostok.Logging.Serilog.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Vostok.Logging.Abstractions">
-      <HintPath>..\..\vostok.logging.abstractions\Vostok.Logging.Abstractions\bin\Release\$(ReferencesFramework)\Vostok.Logging.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Vostok.Logging.Console">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\vostok.logging.console\Vostok.Logging.Console\bin\Release\$(ReferencesFramework)\Vostok.Logging.Console.dll</HintPath>
-    </Reference>
+    <ModuleReference Include="vostok.logging.abstractions" />
+    <ModuleReference Include="vostok.logging.console" />
   </ItemGroup>
 </Project>
