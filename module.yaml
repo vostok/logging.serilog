@@ -9,12 +9,49 @@ notests *default:
     - Vostok.Logging.Serilog/bin/Release/netstandard2.0/Vostok.Logging.Serilog.dll
     - module vostok.logging.abstractions
     - nuget Serilog/2.7.1
+    - groups:
+        - target-framework: "netstandard2.0"
+          libraries:
+            - Vostok.Logging.Serilog/bin/Release/netstandard2.0/Vostok.Logging.Serilog.dll
+          modules:
+            - name: vostok.logging.abstractions
+        - target-framework: "net6.0"
+          libraries:
+            - Vostok.Logging.Serilog/bin/Release/net6.0/Vostok.Logging.Serilog.dll
+          modules:
+            - name: vostok.logging.abstractions
+        - target-framework: "net8.0"
+          libraries:
+            - Vostok.Logging.Serilog/bin/Release/net8.0/Vostok.Logging.Serilog.dll
+          modules:
+            - name: vostok.logging.abstractions
 
   deps:
     - vostok.devtools
     - vostok.logging.abstractions
 
 full-build > notests:
+  install:
+    - Vostok.Logging.Serilog/bin/Release/netstandard2.0/Vostok.Logging.Serilog.dll
+    - module vostok.logging.abstractions
+    - nuget Serilog/2.7.1
+    - groups:
+        - target-framework: "netstandard2.0"
+          libraries:
+            - Vostok.Logging.Serilog/bin/Release/netstandard2.0/Vostok.Logging.Serilog.dll
+          modules:
+            - name: vostok.logging.abstractions
+        - target-framework: "net6.0"
+          libraries:
+            - Vostok.Logging.Serilog/bin/Release/net6.0/Vostok.Logging.Serilog.dll
+          modules:
+            - name: vostok.logging.abstractions
+        - target-framework: "net8.0"
+          libraries:
+            - Vostok.Logging.Serilog/bin/Release/net8.0/Vostok.Logging.Serilog.dll
+          modules:
+            - name: vostok.logging.abstractions
+
   deps:
     - -vostok.devtools
     - vostok.devtools@with-net6.0
